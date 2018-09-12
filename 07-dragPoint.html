@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="email=no,telephone=no" />
+    <meta name="x5-orientation" content="portrait">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+<!-- <meta name="viewport" content="user-scalable=no"> -->
+
+    <title>DEMO</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="css/common.css" rel="stylesheet" type="text/css" />
+    <style>
+
+        .chart_con {
+            width: 100%;
+            margin: .8rem auto;
+            /* margin-top: 100px; */
+            /* perspective: 500px; */
+        }
+        #chart {
+            width:100%;
+            height:5rem;
+            /* margin:20px 10px; */
+            background: #000000;
+            
+ /* transform:scale(0.5) */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layer" ng-controller="zl_ctrl">
+        <div class="chart_con">
+            <!-- width="800" height="600" style="width: 400px;height: 300px;" -->
+            <canvas id="chart"></canvas>
+        </div>
+        <!-- <label>7月</label>
+        <input class="value" type="text" />
+        <label>8月</label>
+        <input class="value" type="text" />
+        <label>9月</label>
+        <input class="value" type="text" />
+        <label>10月</label>
+        <input class="value" type="text" />
+        <label>11月</label>
+        <input class="value" type="text" />
+        <label>12月</label>
+        <input class="value" type="text" /> -->
+        <input class="draw" type="button" value="画线" />
+    </div>
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="./07-拖拽圆点.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<head>
+    <title>笛卡尔坐标系</title>
+</head>
+
+<body onload="draw()">
+    <canvas id="myCanvus" width="440px" height="240px" style="border:1px dashed black;">
+        出现文字表示你的浏览器不支持HTML5
+    </canvas>
+</body>
+
+</html>
+<script type="text/javascript">
+    // <!--
+    function draw() {
+        var canvas = document.getElementById("myCanvus");
+        var canvasWidth = 440;
+        var canvasHeight = 240;
+
+        var context = canvas.getContext("2d");
+        //画矩形
+        context.fillStyle = "white";
+        context.fillRect(0, 0, canvasWidth, canvasHeight);
+        //折线图颜色
+        context.strokeStyle = "black";
+        context.fillStyle = "black";
+
+        context.save();
+
+        // 进行坐标变换：把原点放在左下角，东方为X轴正向，北方为Y轴正向
+        var offset = 20; // 偏移值，用来画坐标轴
+
+        context.save();
+        context.translate(0 + offset, canvasHeight - offset);
+        context.rotate(getRad(180));
+        context.scale(-1, 1);
+
+        drawAxisX(context);
+        drawAxisY(context);
+
+        // 画折线
+        context.beginPath();
+        context.moveTo(0, 0);
+        context.lineTo(50, 50);
+        context.lineTo(100, 25);
+        context.lineTo(150, 75);
+        context.lineTo(200, 50);
+        context.lineTo(250, 100);
+        context.lineTo(300, 75);
+        context.lineTo(350, 125);
+        context.lineTo(400, 100);
+        context.stroke();
+        context.closePath();
+
+        context.restore();
+
+        context.fillText("屏幕坐标系转笛卡尔坐标系", 100, 100);
+    }
+
+    function drawAxisX(ctx) {
+        ctx.save();
+
+        ctx.lineWidth = 0.5;
+        ctx.strokeStyle = 'navy';
+        ctx.fillStyle = 'navy';
+
+        // 画轴
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(400, 0);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(400 - Math.cos(getRad(15)) * 10, Math.sin(getRad(15)) * 10);
+        ctx.lineTo(400, 0);
+        ctx.lineTo(400 - Math.cos(getRad(15)) * 10, -Math.sin(getRad(15)) * 10);
+        ctx.stroke();
+        ctx.closePath();
+
+        // 画刻度
+        var x, y;
+        y = 5;
+        for (x = 50; x < 400; x += 50) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, y);
+
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+        // 写文字
+        for (x = 0; x < 400; x += 50) {
+            ctx.save();
+            ctx.scale(1, -1);
+            ctx.fillText(x, x, y + 10);
+            ctx.restore();
+        }
+
+        ctx.restore();
+    }
+
+    function drawAxisY(ctx) {
+        ctx.save();
+
+        ctx.lineWidth = 0.5;
+        ctx.strokeStyle = 'navy';
+        ctx.fillStyle = 'navy';
+
+        // 画轴
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(0, 200);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(Math.sin(getRad(15)) * 10, 200 - Math.cos(getRad(15)) * 10);
+        ctx.lineTo(0, 200);
+        ctx.lineTo(-Math.sin(getRad(15)) * 10, 200 - Math.cos(getRad(15)) * 10);
+        ctx.stroke();
+        ctx.closePath();
+
+        // 画刻度
+        var x, y;
+        x = 5;
+        for (y = 50; y < 200; y += 50) {
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(0, y);
+
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+        // 写文字
+        x = -19;
+        for (y = 50; y < 200; y += 50) {
+            ctx.save();
+
+            ctx.scale(1, -1);
+            ctx.translate(0, -200);
+
+            ctx.fillText(200 - y, x, y);
+            ctx.restore();
+        }
+
+        ctx.restore();
+    }
+
+    function getRad(degree) {
+        return degree / 180 * Math.PI;
+    }
+    //-->
+</script>

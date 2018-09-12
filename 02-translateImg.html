@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            margin: 200px auto;
+
+            /* 透视:近大远小的3D效果(只是模拟出的效果,本质上还是2D) */
+            perspective: 500px;
+            /* 透视 眼睛距离屏幕的距离 */
+            transform-style: preserve-3d;
+            /* 让盒子里的子盒子保持3D效果(真3D)(默认flat:平面上的扁平化) */
+        }
+
+        img {
+            transition: transform 2s;
+            /* 过渡(动画) */
+            transform-origin: bottom;
+            /* 旋转中心 */
+            /* backface-visibility: hidden; */
+            /* 背面隐藏。3D旋转时,转到背面时隐藏 */
+        }
+
+        .box img:hover {
+            /* 2D旋转 */
+            transform: rotate(45deg);
+            /* 2D旋转 */
+            transform: translate(500px, 100px) rotate(45deg);
+            /* translate(500px,100px)表示相对于原来位置的偏移 (相当于relative 还霸占着原来的位置) */
+            transform-origin: center bottom;
+            /* 旋转中心 */
+            /* 放大/缩小 */
+            transform: scale(0.5);
+            transform: scaleX(0.5);
+            /* X轴方向放大/缩小 */
+            transform: scaleY(0.5);
+            transform: scaleZ(0.5);
+            transform-origin: left;
+            /* 放大/缩小的原点 */
+            /* 倾斜 */
+            transform: skew(10deg, 10deg);
+            /* skew(x-angle,y-angle) */
+            transform: skewX(10deg);
+            /* X轴方向倾斜 */
+            transform: skewY(10deg);
+            transform-origin: left;
+            /* 倾斜的原点 */
+            /* 平移 */
+            transform: translateX(200px);
+            /* X轴平移 */
+            transform: translateY(200px);
+            /* Y轴平移 */
+            transform: translateZ(200px);
+            /* Z轴平移,设置perspective后才有效果 */
+            /* 3D旋转 */
+            transform: rotateX(360deg);
+            /* 3D旋转,绕X轴旋转。旋转角度正方向按左手坐标系 */
+            transform: rotateY(360deg);
+            /*  绕Y轴旋转 */
+            transform: rotateX(360deg);
+            /*  绕Z轴旋转,和2D效果相似,设置perspective没有效果 */
+            /* backface-visibility: hidden; */
+            /* 背面隐藏。3D旋转时,转到背面时隐藏 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <img src="22.jpg" />
+    </div>
+</body>
+
+</html>

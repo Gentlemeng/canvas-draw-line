@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DEMO</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="css/common.css" rel="stylesheet" type="text/css" />
+    <style>
+        .layer {}
+
+        .chart_con {
+            width: 800px;
+            margin: 0 auto;
+            margin-top: 100px;
+            /* perspective: 500px; */
+            transform-style: preserve-3d;
+        }
+
+        #chart {
+            /* transition: transform 2s; */
+            /* transform:rotateX(180deg);
+			-ms-transform: rotateX(180deg);
+			-moz-transform: rotateX(180deg);
+			-webkit-transform: rotateX(180deg);
+			-o-transform: rotateX(180deg); */
+            border: 10px solid #ccc;
+            /* transform-origin: center; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layer" ng-controller="zl_ctrl">
+        <div class="chart_con">
+            <canvas id="chart" width="800" height="600"></canvas>
+        </div>
+        <label>7月</label>
+        <input class="value" type="text" />
+        <label>8月</label>
+        <input class="value" type="text" />
+        <label>9月</label>
+        <input class="value" type="text" />
+        <label>10月</label>
+        <input class="value" type="text" />
+        <label>11月</label>
+        <input class="value" type="text" />
+        <label>12月</label>
+        <input class="value" type="text" />
+        <input class="draw" type="button" value="画线" />
+    </div>
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="./canvasDrawLine.js"></script>
+</body>
+
+</html>
